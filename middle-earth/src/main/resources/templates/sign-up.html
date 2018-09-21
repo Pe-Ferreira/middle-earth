@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+<title>MiddleEarth</title>
+</head>
+<body>
+	<form th:action="@{'/sign-up/new-user'}" method="post">
+		<div class="container">
+			<h2>Middle Earth Command Center - Soldier Registry</h2>
+			<div class="form-group">
+				<label>Login</label> <input type="text" placeholder="Login"
+					name="login" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Password</label> <input type="password"
+					placeholder="Password" name="password" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Race</label> <select class="form-control">
+				<option th:each="race : ${racesEN}" th:value="${race}" th:text="${race}"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Battle Region</label> <select class="form-control">
+				<option th:each="region : ${regionEN}" th:value="${region}" th:text="${region}"></option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-success">Create Account</button>
+			<a class="btn btn-info" href="/">Cancel</a>
+		</div>
+	</form>
+</body>
+</html>
