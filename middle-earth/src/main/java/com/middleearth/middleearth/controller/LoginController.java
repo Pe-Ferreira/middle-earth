@@ -9,30 +9,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.middleearth.middleearth.enums.RaceEN;
 import com.middleearth.middleearth.enums.RegionEN;
+import com.middleearth.middleearth.model.Orc;
 import com.middleearth.middleearth.model.User;
 import com.middleearth.middleearth.service.LoginService;
+import com.middleearth.middleearth.service.OrcService;
 
 @RequestMapping("/")
 @Controller
 public class LoginController {
 	@Autowired
 	private LoginService loginService;
+	@Autowired
+	private OrcService orcService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		User superUser = new User();
-		superUser.setLogin("Saruman");
-		superUser.setPassword("123");
-		superUser.setRace(RaceEN.ISTARI);
-		superUser.setActive(true);
-		this.loginService.persistUser(superUser);
-
-		User trooper = new User();
-		trooper.setLogin("Orc");
-		trooper.setPassword("321");
-		trooper.setRace(RaceEN.ORC);
-		trooper.setActive(true);
-		this.loginService.persistUser(trooper);
+		if(this.loginService.checkSuperUser()) {
+			return "login";
+		}
+		this.loginService.createSuperUser();
 		return "login";
 	}
 
@@ -53,10 +48,22 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/sign-up/new-user", method = RequestMethod.POST)
-	public String newUser(@RequestParam String login, @RequestParam String password, @RequestParam String race) {
-		User user = new User(login, password, RaceEN.valueOf(race));
-		this.loginService.persistUser(user);
-		System.out.println(user);
+	public String newUser(@RequestParam String login, @RequestParam String password, @RequestParam(required = false) String race) {
+		if(race != null && race.equals(RaceEN.ORC.toString())) {
+			Orc orc = new Orc();
+			orc.setLogin(login);
+			orc.setPassword(password);
+			orc.setActive(true);
+			this.orcService.persistOrc(orc);
+			System.out.println(orc);
+		} else {
+			User user = new User();
+			user.setLogin(login);
+			user.setPassword(password);
+			user.setActive(true);
+			this.loginService.persistUser(user);
+			System.out.println(user);
+		}
 		return "login";
 	}
 }

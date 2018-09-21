@@ -13,59 +13,75 @@
 <title>MiddleEarth</title>
 </head>
 <body>
+	<br />
+	<br />
+	<h1 style="text-align: center;">ISTARI MANAGEMENT CENTER</h1>
+	<br />
+	<br />
 	<div class="container">
-		<div class="dropdown">
-			<button class="btn btn-secondary dropdown-toggle" type="button"
-				id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false">ORTHANC</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="#">Action</a> <a
-					class="dropdown-item" href="#">Another action</a> <a
-					class="dropdown-item" href="#">Something else here</a>
+		<div class="row" style="text-align: center;">
+			<div class="col-4">
+				<div class="card border-dark" style="width: 18rem;">
+					<div class="card-body">
+						<h3>Goblins</h3>
+						<h6 class="card-subtitle text-muted">Type the Command:</h6>
+						<br />
+						<textarea rows="3" cols="30" maxlength=100 style="resize: none;"
+							placeholder="Bring me coffee" class="goblin-command"></textarea>
+						<div class="alert alert-success globin-alert-success" role="alert"
+							hidden="true"></div>
+						<br />
+						<button type="button" class="btn btn-success btn-goblin-command">Send
+							Command</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<form>
+					<div class="card border-dark" style="width: 18rem;">
+						<div class="card-body">
+							<h3>Uruk-hai</h3>
+							<h6 class="card-subtitle text-muted">Type the Command:</h6>
+							<br />
+							<textarea rows="3" cols="30" maxlength=100 style="resize: none;"
+								placeholder="Buy some pizza" class="urukhai-command"></textarea>
+							<div class="alert alert-success urukhai-alert-success"
+								role="alert" hidden="true"></div>
+							<br />
+							<button type="button" class="btn btn-success btn-urukhai-command">Send
+								Command</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-4">
+				<form>
+					<div class="card border-dark" style="width: 18rem;">
+						<div class="card-body">
+							<h3>Snaga</h3>
+							<h6 class="card-subtitle text-muted">Type the Command:</h6>
+							<br />
+							<textarea rows="3" cols="25" maxlength=100 style="resize: none;"
+								placeholder="Kill someone" class="snaga-command"></textarea>
+							<div class="alert alert-success snaga-alert-success" role="alert"
+								hidden="true"></div>
+							<br />
+							<button type="button" class="btn btn-success btn-snaga-command">Send
+								Command</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
-		<br /><br />
-		<div class="dropdown">
-			<button class="btn btn-secondary dropdown-toggle" type="button"
-				id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false">ISENGARD</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="#">Action</a> <a
-					class="dropdown-item" href="#">Another action</a> <a
-					class="dropdown-item" href="#">Something else here</a>
-			</div>
-		</div>
-		<br /><br />
-		<div class="dropdown">
-			<button class="btn btn-secondary dropdown-toggle" type="button"
-				id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false">ROHAN</button>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="#">Action</a> <a
-					class="dropdown-item" href="#">Another action</a> <a
-					class="dropdown-item" href="#">Something else here</a>
-			</div>
-		</div>
-		<div>
-			<h3>Orc Section</h3>
-			
-		</div>
+		<br /> <br />
 	</div>
-	<!-- <form th:action="@{'/login'}" method="post">
-		<div class="container">
-		<h2>Middle Earth Command Center</h2>
-		<div class="form-group">
-		<label>Login</label> <input type="text" placeholder="Login"
-			name="login" class="form-control"> 
-			</div>
-			<div class="form-group">
-			<label>Password</label>
-				<input type="password" placeholder="Password" name="password"
-					class="form-control">
-			</div>
-			<button type="submit" class="btn btn-success">Login</button>
-		<a class="btn btn-info" href="/sign-up">Don't have an account? Sign up!</a>
-		</div>
-	</form> -->
+	<div class="container">
+		<h2>Orc Section</h2>
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+	<script th:src="@{/js/admin.js}"></script>
 </body>
 </html>

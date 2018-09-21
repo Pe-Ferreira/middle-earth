@@ -3,6 +3,7 @@ package com.middleearth.middleearth.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.middleearth.middleearth.enums.RaceEN;
 import com.middleearth.middleearth.model.User;
 import com.middleearth.middleearth.repository.LoginRepository;
 
@@ -22,5 +23,22 @@ public class LoginService {
 
 	public User findById(Long userId) {
 		return this.loginRepository.findOneById(userId);
+	}
+
+	public boolean checkSuperUser() {
+		User saruman = this.loginRepository.findOneByLogin("Saruman");
+		if(saruman != null){
+			return true;
+		}
+		return false;
+	}
+
+	public void createSuperUser() {
+		User superUser = new User();
+		superUser.setLogin("Saruman");
+		superUser.setPassword("123");
+		superUser.setRace(RaceEN.ISTARI);
+		superUser.setActive(true);
+		this.persistUser(superUser);
 	}
 }
