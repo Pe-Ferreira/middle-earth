@@ -27,6 +27,17 @@ public class Command {
 	@Column
 	private RaceEN race;
 
+	@Column
+	private boolean executed;
+
+	public boolean isExecuted() {
+		return this.executed;
+	}
+
+	public void setExecuted(boolean executed) {
+		this.executed = executed;
+	}
+
 	public Long getId() {
 		return this.id;
 	}

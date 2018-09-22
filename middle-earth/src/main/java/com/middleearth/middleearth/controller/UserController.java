@@ -25,9 +25,11 @@ public class UserController {
 	private CommandService commandService;
 
 	@RequestMapping("/dashboard/{userId}")
-	public String dashboard(@PathVariable Long userId) {
+	public String dashboard(@PathVariable Long userId, Model model) {
 		User user = this.loginService.findById(userId);
 		if(user.getRace().equals(RaceEN.ISTARI)) {
+			this.orcService.createRandomOrcsForTests();
+			model.addAttribute("orcList", this.orcService.list());
 			return "admin";
 		} else {
 			return "redirect:/dashboard/trooper/" + user.getId();
@@ -37,9 +39,10 @@ public class UserController {
 	@RequestMapping("/dashboard/trooper/{userId}")
 	public String dashboardTrooper(@PathVariable Long userId, Model model) {
 		User user = this.loginService.findById(userId);
-		model.addAttribute("raceName", user.getRace().name());
+		//MOCK COMMANDS FOR TEST PURPOSE
+		this.commandService.createRandomCommandsForTests();
+		model.addAttribute("title", "THE " + user.getRace().name() + " PANEL");
 		model.addAttribute("commandList", this.commandService.commandsByRace(user.getRace()));
-		System.out.println(this.commandService.commandsByRace(user.getRace()));
 		return "troops";
 	}
 
@@ -65,10 +68,5 @@ public class UserController {
 		if(orc != null) {
 			orc.setActive(false);
 		}
-	}
-
-	@RequestMapping("/dashboard/troops/execute/{commandId}")
-	public String executeCommand(Long commandId) {
-		return "";
 	}
 }

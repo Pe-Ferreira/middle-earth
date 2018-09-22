@@ -2,12 +2,10 @@ package com.middleearth.middleearth.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import com.middleearth.middleearth.enums.RaceEN;
 
 @Entity
-@Table
 public class Orc extends User{
 
 	private static final long serialVersionUID = -5256244914076328803L;

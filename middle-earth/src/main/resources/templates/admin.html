@@ -76,8 +76,31 @@
 		<br /> <br />
 	</div>
 	<div class="container">
-		<h2>Orc Section</h2>
-
+		<div class="col-10">
+			<h2>Orc Management Panel</h2>
+			<table>
+				<thead>
+					<tr role="row">
+						<th></th>
+						<th style="width: 5%"></th>
+						<th style="width: 5%"></th>
+						<th style="width: 5%"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="alert alert-secondary" role="row"
+						th:each="orc, index : ${orcList}">
+						<td class="alert alert-secondary" th:text="${orc.login}"></td>
+						<td><button type="button" class="btn btn-danger"
+								th:attr="data-id=${orc.id}">Change Battle Region</button></td>
+						<td><button type="button" class="btn btn-warning"
+								th:attr="data-id=${orc.id}">Join Other Race</button></td>
+						<td><button type="button" class="btn btn-light"
+								th:attr="data-id=${orc.id}">Turn Off</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

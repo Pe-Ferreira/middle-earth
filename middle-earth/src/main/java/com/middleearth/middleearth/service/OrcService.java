@@ -1,5 +1,7 @@
 package com.middleearth.middleearth.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,17 @@ public class OrcService {
 	@Autowired
 	OrcRepository orcRepository;
 
+	public void createRandomOrcsForTests() {
+		for(int i = 0; i < 3; i++) {
+			Orc orc = new Orc();
+			orc.setLogin("orc " + i);
+			orc.setPassword("orc" + i);
+			orc.setRace(RaceEN.ORC);
+			this.persistOrc(orc);
+			System.out.println(orc.getLogin());
+		}
+	}
+
 	public void persistOrc(Orc orc) {
 		this.orcRepository.save(orc);
 	}
@@ -24,6 +37,10 @@ public class OrcService {
 
 	public Orc findById(Long orcId) {
 		return this.orcRepository.findOneById(orcId);
+	}
+
+	public List<Orc> list(){
+		return this.orcRepository.findAll();
 	}
 
 	public void createAndPersistOrc(String login, String password, String race, String region) {

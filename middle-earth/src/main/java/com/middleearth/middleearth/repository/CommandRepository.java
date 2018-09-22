@@ -8,5 +8,6 @@ import com.middleearth.middleearth.enums.RaceEN;
 import com.middleearth.middleearth.model.Command;
 
 public interface CommandRepository extends JpaRepository<Command, Long> {
-	List<Command> findByRace(RaceEN race);
+	List<Command> findByRaceAndExecuted(RaceEN race, boolean executed);
+	Command findOneById(Long commandId);
 }

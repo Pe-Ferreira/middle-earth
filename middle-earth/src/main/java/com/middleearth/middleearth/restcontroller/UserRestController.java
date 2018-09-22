@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.middleearth.middleearth.enums.RaceEN;
+import com.middleearth.middleearth.model.Command;
 import com.middleearth.middleearth.service.CommandService;
 
 @RestController
@@ -29,5 +30,12 @@ public class UserRestController {
 			this.commandService.createAndPersistCommand(command, RaceEN.SNAGA);
 		}
 		return "Command sended!";
+	}
+
+	@RequestMapping(value = "/dashboard/troops/execute/", method = RequestMethod.POST)
+	public String executeCommand(@RequestParam Long commandId) {
+		Command command = this.commandService.findById(commandId);
+		command.setExecuted(true);
+		return "Executed!";
 	}
 }
