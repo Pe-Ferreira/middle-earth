@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.middleearth.middleearth.enums.RaceEN;
 import com.middleearth.middleearth.enums.RegionEN;
-import com.middleearth.middleearth.model.Orc;
 import com.middleearth.middleearth.model.User;
 import com.middleearth.middleearth.service.LoginService;
 import com.middleearth.middleearth.service.OrcService;
@@ -47,23 +46,4 @@ public class LoginController {
 		return "sign-up";
 	}
 
-	@RequestMapping(value = "/sign-up/new-user", method = RequestMethod.POST)
-	public String newUser(@RequestParam String login, @RequestParam String password, @RequestParam(required = false) String race) {
-		if(race != null && race.equals(RaceEN.ORC.toString())) {
-			Orc orc = new Orc();
-			orc.setLogin(login);
-			orc.setPassword(password);
-			orc.setActive(true);
-			this.orcService.persistOrc(orc);
-			System.out.println(orc);
-		} else {
-			User user = new User();
-			user.setLogin(login);
-			user.setPassword(password);
-			user.setActive(true);
-			this.loginService.persistUser(user);
-			System.out.println(user);
-		}
-		return "login";
-	}
 }

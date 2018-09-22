@@ -13,30 +13,50 @@
 <title>MiddleEarth</title>
 </head>
 <body>
-	<form th:action="@{'/sign-up/new-user'}" method="post">
-		<div class="container">
-			<h2>Middle Earth Command Center - Soldier Registry</h2>
-			<div class="form-group">
-				<label>Login</label> <input type="text" placeholder="Login"
-					name="login" class="form-control">
+	<br />
+	<div class="container">
+		<form>
+			<div class="row">
+				<br />
+				<br />
+				<h2 style="text-align: center;">Middle Earth Command Center -
+					Soldier Registry</h2>
+				<div class="col-6">
+					<div class="form-group">
+						<label>Login</label> <input type="text" placeholder="Login"
+							name="login" class="form-control login">
+					</div>
+					<div class="form-group">
+						<label>Password</label> <input type="password"
+							placeholder="Password" name="password"
+							class="form-control password">
+					</div>
+					<div class="form-group">
+						<label>I am a...</label> <select class="form-control race">
+							<option th:each="race : ${racesEN}" th:value="race"
+								th:text="${race}"></option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Battle Region</label> <select class="form-control region">
+							<option th:each="region : ${regionEN}" th:value="${region}"
+								th:text="${region}"></option>
+						</select>
+					</div>
+					<button type="button" class="btn btn-success create">Create
+						Account</button>
+					<a class="btn btn-info" href="/">Cancel</a>
+				</div>
+				<div class="col-6">
+					<div class="alert alert-success created-alert-success" role="alert"
+						hidden="true"></div>
+				</div>
 			</div>
-			<div class="form-group">
-				<label>Password</label> <input type="password"
-					placeholder="Password" name="password" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>I am a...</label> <select class="form-control">
-				<option th:each="race : ${racesEN}" th:value="bilola" th:text="${race}"></option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label>Battle Region</label> <select class="form-control">
-				<option th:each="region : ${regionEN}" th:value="${region}" th:text="${region}"></option>
-				</select>
-			</div>
-			<button type="submit" class="btn btn-success">Create Account</button>
-			<a class="btn btn-info" href="/">Cancel</a>
-		</div>
-	</form>
+		</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+	<script th:src="@{/js/signup.js}"></script>
 </body>
 </html>

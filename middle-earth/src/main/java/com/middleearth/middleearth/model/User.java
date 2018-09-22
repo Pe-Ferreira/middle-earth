@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.middleearth.middleearth.enums.RaceEN;
+import com.middleearth.middleearth.enums.RegionEN;
 
 @Entity
 @Table
@@ -34,6 +35,17 @@ public class User {
 
 	@Column
 	private RaceEN race;
+
+	public RegionEN getRegion() {
+		return this.region;
+	}
+
+	public void setRegion(RegionEN region) {
+		this.region = region;
+	}
+
+	@Column
+	private RegionEN region;
 
 	@Column
 	private boolean active;

@@ -1,5 +1,7 @@
 package com.middleearth.middleearth.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +24,9 @@ public class CommandService {
 		goblinCommand.setCommand(command);
 		goblinCommand.setRace(race);
 		this.persistCommand(goblinCommand);
+	}
+
+	public List<Command> commandsByRace(RaceEN race){
+		return this.commandRepository.findByRace(race);
 	}
 }

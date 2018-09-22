@@ -2,6 +2,7 @@ package com.middleearth.middleearth.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -9,6 +10,7 @@ import com.middleearth.middleearth.enums.RaceEN;
 import com.middleearth.middleearth.enums.RegionEN;
 import com.middleearth.middleearth.model.Orc;
 import com.middleearth.middleearth.model.User;
+import com.middleearth.middleearth.service.CommandService;
 import com.middleearth.middleearth.service.LoginService;
 import com.middleearth.middleearth.service.OrcService;
 
@@ -19,6 +21,8 @@ public class UserController {
 	private LoginService loginService;
 	@Autowired
 	private OrcService orcService;
+	@Autowired
+	private CommandService commandService;
 
 	@RequestMapping("/dashboard/{userId}")
 	public String dashboard(@PathVariable Long userId) {
@@ -26,8 +30,17 @@ public class UserController {
 		if(user.getRace().equals(RaceEN.ISTARI)) {
 			return "admin";
 		} else {
-			return "troops";
+			return "redirect:/dashboard/trooper/" + user.getId();
 		}
+	}
+
+	@RequestMapping("/dashboard/trooper/{userId}")
+	public String dashboardTrooper(@PathVariable Long userId, Model model) {
+		User user = this.loginService.findById(userId);
+		model.addAttribute("raceName", user.getRace().name());
+		model.addAttribute("commandList", this.commandService.commandsByRace(user.getRace()));
+		System.out.println(this.commandService.commandsByRace(user.getRace()));
+		return "troops";
 	}
 
 	@RequestMapping("/dashboard/admin/switch-orc-region/{orcId}/{newRegion}")

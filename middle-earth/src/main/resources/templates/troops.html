@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+<title>MiddleEarth</title>
+</head>
+<body>
+	<br />
+	<br />
+	<h1 style="text-align: center;">ISTARI MANAGEMENT CENTER</h1>
+	<br />
+	<br />
+	<div class="container">
+		<div class="row" style="text-align: center;">
+			<div class="col-4">
+				<div class="card border-dark" style="width: 18rem;">
+					<div class="card-body">
+						<h3>Goblins</h3>
+						<h6 class="card-subtitle text-muted">Type the Command:</h6>
+						<br />
+						<textarea rows="3" cols="30" maxlength=100 style="resize: none;"
+							placeholder="Bring me coffee" class="goblin-command"></textarea>
+						<div class="alert alert-success globin-alert-success" role="alert"
+							hidden="true"></div>
+						<br />
+						<button type="button" class="btn btn-success btn-goblin-command">Send
+							Command</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<form>
+					<div class="card border-dark" style="width: 18rem;">
+						<div class="card-body">
+							<h3>Uruk-hai</h3>
+							<h6 class="card-subtitle text-muted">Type the Command:</h6>
+							<br />
+							<textarea rows="3" cols="30" maxlength=100 style="resize: none;"
+								placeholder="Buy some pizza" class="urukhai-command"></textarea>
+							<div class="alert alert-success urukhai-alert-success"
+								role="alert" hidden="true"></div>
+							<br />
+							<button type="button" class="btn btn-success btn-urukhai-command">Send
+								Command</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-4">
+				<form>
+					<div class="card border-dark" style="width: 18rem;">
+						<div class="card-body">
+							<h3>Snaga</h3>
+							<h6 class="card-subtitle text-muted">Type the Command:</h6>
+							<br />
+							<textarea rows="3" cols="25" maxlength=100 style="resize: none;"
+								placeholder="Kill someone" class="snaga-command"></textarea>
+							<div class="alert alert-success snaga-alert-success" role="alert"
+								hidden="true"></div>
+							<br />
+							<button type="button" class="btn btn-success btn-snaga-command">Send
+								Command</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<br /> <br />
+	</div>
+	<div class="container">
+		<h2>Orc Section</h2>
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+	<script th:src="@{/js/admin.js}"></script>
+</body>
+</html>

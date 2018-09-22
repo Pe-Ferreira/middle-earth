@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.middleearth.middleearth.enums.RaceEN;
+import com.middleearth.middleearth.enums.RegionEN;
 import com.middleearth.middleearth.model.User;
 import com.middleearth.middleearth.repository.LoginRepository;
 
@@ -40,5 +41,15 @@ public class LoginService {
 		superUser.setRace(RaceEN.ISTARI);
 		superUser.setActive(true);
 		this.persistUser(superUser);
+	}
+
+	public void createAndPersistUser(String login, String password, String race, String region) {
+		User user = new User();
+		user.setLogin(login);
+		user.setPassword(password);
+		user.setActive(true);
+		user.setRace(RaceEN.valueOf(race));
+		user.setRegion(RegionEN.valueOf(region));
+		this.persistUser(user);
 	}
 }
