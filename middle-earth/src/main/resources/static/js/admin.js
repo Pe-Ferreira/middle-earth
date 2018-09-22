@@ -59,4 +59,21 @@ $(document).ready(function() {
 			}
 		});
 	});
+	$('body').on('click', '.turn-off', function() {
+		var orcId = $(this).data('id');
+		console.log(orcId);
+		$.ajax({
+			type : "POST",
+			url : '/dashboard/admin/remove-orc',
+			data : {
+				'orcId': orcId
+			},
+			success : function(retorno) {
+				alert(retorno);
+				setTimeout(function(){
+					location.reload(true);
+				}, 2000);
+			}
+		});
+	});
 });

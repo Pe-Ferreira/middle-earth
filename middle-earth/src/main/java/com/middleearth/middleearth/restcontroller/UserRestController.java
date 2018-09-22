@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.middleearth.middleearth.enums.RaceEN;
 import com.middleearth.middleearth.model.Command;
+import com.middleearth.middleearth.model.Orc;
 import com.middleearth.middleearth.service.CommandService;
+import com.middleearth.middleearth.service.OrcService;
 
 @RestController
 public class UserRestController {
@@ -19,6 +21,8 @@ public class UserRestController {
 
 	@Autowired
 	private CommandService commandService;
+	@Autowired
+	private OrcService orcService;
 
 	@RequestMapping(value = "/dashboard/admin/send-command", method = RequestMethod.POST)
 	public String sendCommand(@RequestParam String raceKey, @RequestParam String command) {
@@ -37,5 +41,14 @@ public class UserRestController {
 		Command command = this.commandService.findById(commandId);
 		command.setExecuted(true);
 		return "Executed!";
+	}
+
+	@RequestMapping(value = "/dashboard/admin/remove-orc", method = RequestMethod.POST)
+	public String removeOrcFromTroops(@RequestParam Long orcId) {
+		Orc orc = this.orcService.findById(orcId);
+		if(orc != null) {
+			orc.setActive(false);
+		}
+		return "Orc removed from army!";
 	}
 }

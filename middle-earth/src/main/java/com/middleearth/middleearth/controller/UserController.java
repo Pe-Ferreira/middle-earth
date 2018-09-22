@@ -61,12 +61,4 @@ public class UserController {
 			this.orcService.persistOrc(orc);
 		}
 	}
-
-	@RequestMapping("/dashboard/admin/remove-orc/{orcId}")
-	public void removeOrcFromTroops(Long orcId) {
-		Orc orc = this.orcService.findById(orcId);
-		if(orc != null) {
-			orc.setActive(false);
-		}
-	}
 }
